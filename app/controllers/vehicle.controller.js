@@ -2,7 +2,6 @@ import { Vehicle } from "../models/vehicle.model.js"
 import fs from "fs-extra"
 import csv from "csvtojson"
 
-const db = "../models/index.js"
 export const create = (req, res) => {
   // upload csv file
   const __dirname =
@@ -28,6 +27,7 @@ export const create = (req, res) => {
     file.pipe(fstream)
     fstream.on("close", function () {
       console.log("Upload Finished of " + _fileName + "." + _fileType)
+
       // convert to json
       csv()
         .fromFile(
